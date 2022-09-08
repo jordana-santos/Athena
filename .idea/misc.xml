@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_atualizar_dados.xml" value="0.28940217391304346" />
+        <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_avaliar.xml" value="0.33" />
+        <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_editar_foto.xml" value="0.33" />
         <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_favoritos.xml" value="0.33" />
         <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_historico.xml" value="0.33" />
         <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_info_livro.xml" value="0.33" />
@@ -11,6 +13,7 @@
         <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_perfil.xml" value="0.33" />
+        <entry key="..\:/Users/20201tiimi0349/StudioProjects/Athena/app/src/main/res/layout/activity_redefinir_senha.xml" value="0.33" />
       </map>
     </option>
   </component>
