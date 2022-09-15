@@ -23,15 +23,6 @@
             android:name=".AvaliarActivity"
             android:exported="false" />
         <activity
-            android:name=".PerfilActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FavoritosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HistoricoActivity"
-            android:exported="false" />
-        <activity
             android:name=".InfoLivroActivity"
             android:exported="false" />
         <activity
