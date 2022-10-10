@@ -1,3 +1,12 @@
 <resources>
+    <!-- Texto tela login-->
     <string name="app_name">Athena</string>
+    <string name="introLogin">Acesse sua conta!</string>
+    <string name="introRedefinir">Esqueceu a senha?</string>
+    <string name="redefinirSenha">Redefinir senha</string>
+
+    <!-- Texto tela avaliar-->
+    <string name="introAvaliar">Avalie sua última leitura!</string>
+    <string name="nomeLivro">Nome do livro</string>
+    <string name="nota">Nota:</string>
 </resources>

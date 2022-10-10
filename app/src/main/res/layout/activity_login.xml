@@ -60,7 +60,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
-        android:text="Acesse sua conta!"
+        android:text="@string/introLogin"
         app:layout_constraintBottom_toTopOf="@+id/edEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -73,7 +73,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:clickable="false"
-        android:text="Athena"
+        android:text="@string/app_name"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tvIntroLogin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +99,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:text="Esqueceu a senha?"
+        android:text="@string/introRedefinir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEntrar" />
@@ -112,7 +112,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:clickable="true"
-        android:text="Redefinir senha"
+        android:text="@string/redefinirSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvIntroRedefinir" />
