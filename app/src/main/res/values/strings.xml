@@ -9,4 +9,5 @@
     <string name="introAvaliar">Avalie sua última leitura!</string>
     <string name="nomeLivro">Nome do livro</string>
     <string name="nota">Nota:</string>
+    <string name="pesquisa">Pesquisar Livros</string>
 </resources>
