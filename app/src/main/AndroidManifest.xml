@@ -14,19 +14,10 @@
         android:theme="@style/Theme.Athena"
         tools:targetApi="31" >
         <activity
-            android:name=".EditarFotoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RedefinirSenhaActivity"
-            android:exported="false" />
-        <activity
             android:name=".AvaliarActivity"
             android:exported="false" />
         <activity
             android:name=".InfoLivroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ListaLivrosActivity"
             android:exported="false" />
         <activity
             android:name=".AtualizarDadosActivity"
