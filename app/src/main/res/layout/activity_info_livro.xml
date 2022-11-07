@@ -27,14 +27,161 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvInfoLivro"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/bnvInfoLivro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbInfoLivro" />
+        app:layout_constraintTop_toBottomOf="@+id/tbInfoLivro">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <ImageView
+                android:id="@+id/imCapaLivro"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvTituloSinopse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sinopse"
+                android:textColor="@color/grafitti"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvSinopse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sinopse" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvTituloSobre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sobre"
+                android:textColor="@color/grafitti"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvAutorInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Autor" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvEditoraInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editora" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvEdicaoInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edicao" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvVolumeInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Volume" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvPagInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Paginas" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvDataPubliInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data de publicacao" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvISBN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ISBN" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvTituloAvaliacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/avaliacoes"
+                android:textColor="@color/grafitti"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAvaliacoesInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

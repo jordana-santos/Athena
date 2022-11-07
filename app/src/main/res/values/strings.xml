@@ -10,4 +10,9 @@
     <string name="nomeLivro">Nome do livro</string>
     <string name="nota">Nota:</string>
     <string name="pesquisa">Pesquisar livro</string>
+
+    <!-- Texto tela info_livro -->
+    <string name="sinopse">Sinopse:</string>
+    <string name="sobre">Sobre:</string>
+    <string name="avaliacoes">Avaliações:</string>
 </resources>
