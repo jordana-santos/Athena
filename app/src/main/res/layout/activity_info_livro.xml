@@ -58,6 +58,17 @@
                 android:layout_height="8dp" />
 
             <TextView
+                android:id="@+id/tvAvaliacoesInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/avaliacoes" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
                 android:id="@+id/tvTituloSinopse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,28 +169,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ISBN" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
-
-            <TextView
-                android:id="@+id/tvTituloAvaliacao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/avaliacoes"
-                android:textColor="@color/grafitti"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAvaliacoesInfo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
         </LinearLayout>
     </ScrollView>

@@ -14,5 +14,5 @@
     <!-- Texto tela info_livro -->
     <string name="sinopse">Sinopse:</string>
     <string name="sobre">Sobre:</string>
-    <string name="avaliacoes">Avaliações:</string>
+    <string name="avaliacoes">Avaliações</string>
 </resources>
