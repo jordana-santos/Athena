@@ -30,12 +30,12 @@ public class CategoriaAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Categoria c = list.get(position);
+        Categoria cat = list.get(position);
         TextView tvCategoriaName = holder.itemView.findViewById(R.id.tvCategoriaName);
-        tvCategoriaName.setText(c.nome);
+        tvCategoriaName.setText(cat.nome);
 
         ImageView imCategoria = holder.itemView.findViewById(R.id.imCategoria);
-        imCategoria.setImageBitmap(c.imagem);
+        imCategoria.setImageBitmap(cat.imagem);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +44,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter {
                 // TODO criar book list item
                 // TODO adapter book list item
                 // TODO criar fragment do perfil
+                mainActivity.setarFragmentoListaLivro();
             }
         });
     }

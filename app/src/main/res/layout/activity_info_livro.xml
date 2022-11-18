@@ -43,19 +43,20 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <Space
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="8dp" />
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imCapaLivro"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
+                <ImageView
+                    android:id="@+id/imCapaLivro"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/tvAvaliacoesInfo"

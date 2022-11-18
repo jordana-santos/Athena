@@ -52,7 +52,7 @@ public class ListaLivroAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 // TODO terminar isso
-
+                mainActivity.navegarInfoLivro(l.id);
             }
         });
     }
