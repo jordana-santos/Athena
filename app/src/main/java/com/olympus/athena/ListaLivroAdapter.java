@@ -25,7 +25,7 @@ public class ListaLivroAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.item_book_list, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_lista_livro, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -33,8 +33,14 @@ public class ListaLivroAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Livro l = list.get(position);
 
+        ImageView imCapa = holder.itemView.findViewById(R.id.imCapaLivro);
+        imCapa.setImageBitmap(l.imgCapa);
+
         TextView tvTitulo = holder.itemView.findViewById(R.id.tvTituloListaLivro);
         tvTitulo.setText(l.titulo);
+
+        TextView tvNota = holder.itemView.findViewById(R.id.tvNotaListaLivro);
+        tvNota.setText(l.nota);
 
         TextView tvCategoria = holder.itemView.findViewById(R.id.tvCategoriaListaLivro);
         tvCategoria.setText(l.categoria);
@@ -42,22 +48,17 @@ public class ListaLivroAdapter extends RecyclerView.Adapter {
         TextView tvSinopse = holder.itemView.findViewById(R.id.tvSinopseListaLivro);
         tvSinopse.setText(l.sinopse);
 
-        TextView tvNota = holder.itemView.findViewById(R.id.tvNotaListaLivro);
-        tvNota.setText(l.nota);
-
-        ImageView imCapa = holder.itemView.findViewById(R.id.imCapaLivro);
-        imCapa.setImageBitmap(l.imgCapa);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO terminar isso
+
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 }

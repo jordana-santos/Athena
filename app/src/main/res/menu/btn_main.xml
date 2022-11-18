@@ -12,5 +12,10 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/opHistory"
-        android:icon="@drawable/history" />
+        android:icon="@drawable/history"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/opUsuario"
+        android:icon="@drawable/user"
+        app:showAsAction="ifRoom" />
 </menu>
