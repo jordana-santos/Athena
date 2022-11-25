@@ -3,11 +3,18 @@ package com.olympus.athena;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,8 +38,7 @@ public class BookListFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param idCategoria Parameter 1.
      * @return A new instance of fragment BookListFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -59,5 +65,15 @@ public class BookListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_lista_livro, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        MainViewModel mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+        List<Livro> livros = mainViewModel.pegarListaLivros();
+        ListaLivroAdapter adapter = new ListaLivroAdapter((MainActivity) getActivity(), livros);
 
+        RecyclerView rv = view.findViewById(R.id.rvListFrag);
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
 }

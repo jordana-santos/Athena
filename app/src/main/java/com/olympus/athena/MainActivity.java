@@ -1,15 +1,21 @@
 package com.olympus.athena;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Adapter;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -22,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
         // setando a action bar da tela
         Toolbar tbMain = findViewById(R.id.tbMain);
         setSupportActionBar(tbMain);
+
     }
 
     public void setActivityTitle(String title) {
         //método para setar o nome da activity
         setTitle(title);
     }
+
     public void navegarInfoLivro(Integer id){
         Intent i = new Intent(MainActivity.this, InfoLivroActivity.class);
         i.putExtra("id", id);
@@ -47,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setarFragmentoListaLivro(int id){
-        BookListFragment gridViewFragment = BookListFragment.newInstance();
+        BookListFragment gridViewFragment = BookListFragment.newInstance(id);
         setFragment(gridViewFragment);
     }
 }

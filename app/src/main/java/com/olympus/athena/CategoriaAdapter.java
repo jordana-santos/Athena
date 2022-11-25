@@ -35,16 +35,14 @@ public class CategoriaAdapter extends RecyclerView.Adapter {
         tvCategoriaName.setText(cat.nome);
 
         ImageView imCategoria = holder.itemView.findViewById(R.id.imCategoria);
-        imCategoria.setImageBitmap(cat.imagem);
+        imCategoria.setImageResource(cat.imagem);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO criar o código do onclick
-                // TODO criar book list item
-                // TODO adapter book list item
                 // TODO criar fragment do perfil
-                mainActivity.setarFragmentoListaLivro();
+                mainActivity.setarFragmentoListaLivro(cat.id);
             }
         });
     }
