@@ -1,14 +1,16 @@
-package com.olympus.athena;
+package com.olympus.athena.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AtualizarDadosActivity extends AppCompatActivity {
+import com.olympus.athena.R;
+
+public class AvaliarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_atualizar_dados);
+        setContentView(R.layout.activity_avaliar);
     }
 }

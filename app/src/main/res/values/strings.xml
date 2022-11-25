@@ -15,4 +15,10 @@
     <string name="sinopse">Sinopse:</string>
     <string name="sobre">Sobre:</string>
     <string name="avaliacoes">Avaliações</string>
+
+    <!-- Texto fragment perfil -->
+    <string name="alterarDados">Alterar dados</string>
+    <string name="sair">Sair</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

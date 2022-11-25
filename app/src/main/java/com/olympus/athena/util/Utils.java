@@ -1,4 +1,4 @@
-package com.olympus.athena;
+package com.olympus.athena.util;
 
         import android.content.Context;
         import android.graphics.Bitmap;

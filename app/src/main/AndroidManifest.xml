@@ -13,29 +13,26 @@
         android:theme="@style/Theme.Athena"
         tools:targetApi="31">
         <activity
-            android:name=".PerfilActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Avalicoes"
+            android:name=".activity.AvalicoesActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AvaliarActivity"
+            android:name=".activity.AvaliarActivity"
             android:exported="false" />
         <activity
-            android:name=".InfoLivroActivity"
+            android:name=".activity.InfoLivroActivity"
             android:exported="false" />
         <activity
-            android:name=".AtualizarDadosActivity"
+            android:name=".activity.AtualizarDadosActivity"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

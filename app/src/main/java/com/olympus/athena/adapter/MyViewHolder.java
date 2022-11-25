@@ -1,4 +1,4 @@
-package com.olympus.athena;
+package com.olympus.athena.adapter;
 
 import android.view.View;
 

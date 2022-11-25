@@ -1,10 +1,12 @@
-package com.olympus.athena;
+package com.olympus.athena.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.olympus.athena.R;
 
 public class LoginActivity extends AppCompatActivity {
 

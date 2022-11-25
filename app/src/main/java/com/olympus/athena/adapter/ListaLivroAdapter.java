@@ -1,6 +1,5 @@
-package com.olympus.athena;
+package com.olympus.athena.adapter;
 
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.olympus.athena.R;
+import com.olympus.athena.activity.MainActivity;
+import com.olympus.athena.model.Livro;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimary"
-    tools:context=".AtualizarDadosActivity">
+    tools:context=".activity.AtualizarDadosActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbAtualizarDados"
