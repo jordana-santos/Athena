@@ -36,7 +36,7 @@ public class ListaLivroAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Livro l = list.get(position);
 
-        ImageView imCapa = holder.itemView.findViewById(R.id.imCapaLivro);
+        ImageView imCapa = holder.itemView.findViewById(R.id.imCapaListaLivro);
         imCapa.setImageResource(l.imgCapa);
 
         TextView tvTitulo = holder.itemView.findViewById(R.id.tvTituloListaLivro);

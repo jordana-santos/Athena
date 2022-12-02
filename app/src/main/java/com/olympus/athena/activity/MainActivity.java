@@ -45,23 +45,28 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.opHome:
                         BookCatFragment bookCat = BookCatFragment.newInstance();
                         setFragment(bookCat);
+                        setActivityTitle("Categorias");
                         break;
                     case R.id.opFav:
                         BookFavFragment bookFav = BookFavFragment.newInstance();
                         setFragment(bookFav);
+                        setActivityTitle("Favoritos");
                         break;
                     case R.id.opHistory:
                         BookHistoryFragment bookHistory = BookHistoryFragment.newInstance();
                         setFragment(bookHistory);
+                        setActivityTitle("Histórico");
                         break;
                     case R.id.opUsuario:
                         PerfilFragment perfilFragment = PerfilFragment.newInstance();
                         setFragment(perfilFragment);
+                        setActivityTitle("Perfil");
                         break;
                 }
                 return true;
             }
         });
+        bottomNavigationView.setSelectedItemId(R.id.opHome);
 
     }
 

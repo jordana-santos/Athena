@@ -56,7 +56,7 @@ public class BookFavFragment extends Fragment {
         List<Livro> livros = mainViewModel.pegarListaLivros();
         ListaLivroAdapter adapter = new ListaLivroAdapter((MainActivity) getActivity(),livros);
 
-        RecyclerView rv = view.findViewById(R.id.rvListFrag);
+        RecyclerView rv = view.findViewById(R.id.rvFavFrag);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
     }

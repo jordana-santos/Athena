@@ -59,7 +59,7 @@ public class BookListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            idCat = getArguments().getString(ARG_PARAM1);
+            idCat = String.valueOf(getArguments().getInt(ARG_PARAM1));
         }
     }
 
