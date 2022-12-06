@@ -15,7 +15,7 @@ package com.olympus.athena.util;
         import java.io.InputStream;
         import java.io.InputStreamReader;
 
-public class Utils {
+public class Util {
     /**
      * Calcula o numero de colunas que cabem na tela ao usar o tipo de
      * visualizacao GRID no RecycleView
@@ -253,6 +253,14 @@ public class Utils {
     {
         byte[] imageAsBytes = Base64.decode(myImageData.getBytes(),Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+    }
+
+    public static Bitmap inputStream2Bitmap(InputStream is) throws IOException {
+        try {
+            return BitmapFactory.decodeStream(is);
+        } finally {
+            is.close();
+        }
     }
 }
 
