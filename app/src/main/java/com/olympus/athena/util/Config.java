@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 public class Config {
 
     // endereço base do servidor web
-    public static String PRODUCTS_APP_URL = "https://productifesweb-production.up.railway.app/";
+    public static String PRODUCTS_APP_URL = "http://10.0.2.2/Athena_php/";
 
     /**
      * Salva o login no espaço reservado da app

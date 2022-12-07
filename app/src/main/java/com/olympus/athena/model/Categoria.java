@@ -12,4 +12,8 @@ public class Categoria {
         this.nome = nome;
         this.imagem = imagem;
     }
+
+    public Categoria() {
+
+    }
 }
