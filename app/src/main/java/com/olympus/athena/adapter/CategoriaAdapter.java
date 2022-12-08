@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.paging.PagingDataAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.olympus.athena.R;
@@ -15,25 +17,25 @@ import com.olympus.athena.model.Categoria;
 
 import java.util.List;
 
-public class CategoriaAdapter extends RecyclerView.Adapter {
+public class CategoriaAdapter extends PagingDataAdapter<Categoria, MyViewHolder> {
 
     List<Categoria> list;
     MainActivity mainActivity;
-    public CategoriaAdapter(MainActivity mainActivity, List<Categoria> list) {
+    public CategoriaAdapter(MainActivity mainActivity, @NonNull DiffUtil.ItemCallback<Categoria> diffCallBack) {
+        super(diffCallBack);
         this.mainActivity = mainActivity;
-        this.list = list;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_categoria, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Categoria cat = list.get(position);
         TextView tvCategoriaName = holder.itemView.findViewById(R.id.tvCategoriaName);
         tvCategoriaName.setText(cat.nome);
@@ -45,14 +47,12 @@ public class CategoriaAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 // TODO criar o código do onclick
-                // TODO criar fragment do perfil
                 mainActivity.setarFragmentoListaLivro(cat.id);
             }
         });
     }
 
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
+//    @Override//   public int getItemCount() {
+//        return list.size();
+//    }
 }

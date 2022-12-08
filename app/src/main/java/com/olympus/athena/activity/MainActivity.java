@@ -97,4 +97,6 @@ public class MainActivity extends AppCompatActivity {
         BookListFragment linearViewFragment = BookListFragment.newInstance(id);
         setFragment(linearViewFragment);
     }
+
+    // TODO Não sei como avançar, mudei o sql no php porém não sei como integrar ao android
 }

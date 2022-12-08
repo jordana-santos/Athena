@@ -15,4 +15,8 @@ public class Livro {
         this.sinopse = sinopse;
         this.nota = nota;
     }
+
+    public Livro() {
+
+    }
 }

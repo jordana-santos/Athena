@@ -5,7 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.paging.PagingData;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.olympus.athena.adapter.CategoriaComparator;
+import com.olympus.athena.model.CatViewModel;
 import com.olympus.athena.model.Categoria;
 import com.olympus.athena.adapter.CategoriaAdapter;
 import com.olympus.athena.model.MainViewModel;
@@ -52,8 +56,12 @@ public class BookCatFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MainViewModel mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
-        List<Categoria> categorias = mainViewModel.pegarCategorias();
+        //MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        CatViewModel mainViewModel = new ViewModelProvider(this).get(CatViewModel.class);
+
+        // TODO erro não sei pq
+        //List<Categoria> categorias = mainViewModel.pegarCategoriasServer();
+        LiveData<PagingData<Categoria>> categorias = mainViewModel.getProductsLd();
         CategoriaAdapter adapter = new CategoriaAdapter((MainActivity) getActivity(), categorias);
 
         RecyclerView rv = view.findViewById(R.id.rvCatFrag);
