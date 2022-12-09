@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/imCapaListaLivro"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -27,7 +27,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvNotaListaLivro"
         app:layout_constraintStart_toEndOf="@+id/imCapaListaLivro"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,22 +37,26 @@
         android:id="@+id/tvNotaListaLivro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imCapaListaLivro"
-        app:layout_constraintTop_toBottomOf="@+id/tvTituloListaLivro" />
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvAutorListaLivro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvCategoriaListaLivro"
+        android:id="@+id/tvAutorListaLivro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvNotaListaLivro"
+        app:layout_constraintStart_toEndOf="@+id/imCapaListaLivro"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloListaLivro" />
 
     <TextView
@@ -61,9 +67,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:maxLines="3"
         android:text="TextView"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imCapaListaLivro"
-        app:layout_constraintTop_toBottomOf="@+id/tvCategoriaListaLivro" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAutorListaLivro" />
 </androidx.constraintlayout.widget.ConstraintLayout>

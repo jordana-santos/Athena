@@ -1,19 +1,11 @@
 package com.olympus.athena.model;
 
-import android.graphics.Bitmap;
-
 public class Categoria {
-    public int id;
-    public String nome;
-    public int imagem;
+    public String codigoCategoria, dscCategoria;
 
-    public Categoria(int id, String nome, int imagem) {
-        this.id = id;
-        this.nome = nome;
-        this.imagem = imagem;
+    public Categoria(String codigoCategoria, String dscCategoria) {
+        this.codigoCategoria = codigoCategoria;
+        this.dscCategoria = dscCategoria;
     }
 
-    public Categoria() {
-
-    }
 }

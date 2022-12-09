@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle(title);
     }
 
-    public void navegarInfoLivro(Integer id){
+    public void navegarInfoLivro(String id){
         Intent i = new Intent(MainActivity.this, InfoLivroActivity.class);
         i.putExtra("id", id);
         startActivity(i);
@@ -93,10 +93,9 @@ public class MainActivity extends AppCompatActivity {
         setFragment(gridViewFragment);
     }
 
-    public void setarFragmentoListaLivro(int id ){
+    public void setarFragmentoListaLivro(String id ){
         BookListFragment linearViewFragment = BookListFragment.newInstance(id);
         setFragment(linearViewFragment);
     }
 
-    // TODO Não sei como avançar, mudei o sql no php porém não sei como integrar ao android
 }

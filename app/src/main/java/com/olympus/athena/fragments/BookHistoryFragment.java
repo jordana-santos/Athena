@@ -53,11 +53,11 @@ public class BookHistoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         MainViewModel mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
-        List<Livro> livros = mainViewModel.pegarListaLivros();
-        ListaLivroAdapter adapter = new ListaLivroAdapter((MainActivity) getActivity(),livros);
+       // List<Livro> livros = mainViewModel.pegarListaLivros();
+       // ListaLivroAdapter adapter = new ListaLivroAdapter((MainActivity) getActivity(),livros);
 
         RecyclerView rv = view.findViewById(R.id.rvHist);
-        rv.setAdapter(adapter);
+       // rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }

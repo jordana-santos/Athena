@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagingData;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -57,15 +58,27 @@ public class BookCatFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        CatViewModel mainViewModel = new ViewModelProvider(this).get(CatViewModel.class);
+        MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        // TODO erro não sei pq
-        //List<Categoria> categorias = mainViewModel.pegarCategoriasServer();
-        LiveData<PagingData<Categoria>> categorias = mainViewModel.getProductsLd();
-        CategoriaAdapter adapter = new CategoriaAdapter((MainActivity) getActivity(), categorias);
+        LiveData<PagingData<Categoria>> categoriasLd = mainViewModel.getCatLd();
+        CategoriaAdapter adapter = new CategoriaAdapter((MainActivity) getActivity(), new CategoriaComparator());
 
         RecyclerView rv = view.findViewById(R.id.rvCatFrag);
         rv.setAdapter(adapter);
-        rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        rv.setLayoutManager(new GridLayoutManager((MainActivity) getActivity(), 2));
+
+        categoriasLd.observe((MainActivity) getActivity(), new Observer<PagingData<Categoria>>() {
+            /**
+             * Esse método é chamado sempre que uma nova página de produtos é entregue à app pelo
+             * servidor web.
+             */
+            @Override
+            public void onChanged(PagingData<Categoria> categoriaPagingData) {
+
+                // Adiciona a nova página de produtos ao Adapter do RecycleView. Isso faz com que
+                // novos produtos apareçam no RecycleView.
+                adapter.submitData(getLifecycle(),categoriaPagingData);
+            }
+        });
     }
 }

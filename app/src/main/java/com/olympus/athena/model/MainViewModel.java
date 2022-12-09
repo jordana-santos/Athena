@@ -3,6 +3,7 @@ package com.olympus.athena.model;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelKt;
@@ -20,9 +21,19 @@ import java.util.List;
 
 import kotlinx.coroutines.CoroutineScope;
 
-public class MainViewModel extends ViewModel {
-
+public class MainViewModel extends AndroidViewModel {
+    AthenaRepository athenaRepository;
     int opSelected = R.id.opHome;
+    LiveData<PagingData<Categoria>> catLd;
+    LiveData<PagingData<Livro>> booksLd;
+    LiveData<PagingData<Livro>> booksFavLd;
+
+    public MainViewModel(@NonNull Application application) {
+        super(application);
+        athenaRepository = new AthenaRepository(application);
+
+    }
+
 
     public int getOpSelected() {
         return opSelected;
@@ -32,42 +43,29 @@ public class MainViewModel extends ViewModel {
         this.opSelected = opSelected;
     }
 
-    public List<Categoria> pegarCategorias(){
-        List<Categoria> ListaCategorias = new ArrayList<>();
 
-        Categoria c1 = new Categoria(0, "Drama", R.mipmap.ic_drama);
-        Categoria c2 = new Categoria(1, "Aventura", R.mipmap.ic_drama);
+    public LiveData<PagingData<Categoria>> getCatLd(){
 
-        ListaCategorias.add(c1);
-        ListaCategorias.add(c2);
-
-        return ListaCategorias;
-    }
-
-    LiveData<PagingData<Categoria>> booksLd;
-    public void pegarCategoriasServer(@NonNull Application application){
-        AthenaRepository athenaRepository = new AthenaRepository(application);
         CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
         Pager<Integer, Categoria> pager = new Pager(new PagingConfig(10), () -> new CategoriaPagingSource(athenaRepository));
-        booksLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+        catLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+        return catLd;
     }
 
-    public LiveData<PagingData<Categoria>> getProductsLd() {
+    public LiveData<PagingData<Livro>> getBooksLd(String id){
+
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Livro> pager = new Pager(new PagingConfig(10), () -> new LivrosPagingSource(athenaRepository, id));
+        booksLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
         return booksLd;
     }
 
-    public List<Livro> pegarListaLivros(){
-        List<Livro> ListaLivros = new ArrayList<>();
+    public LiveData<PagingData<Livro>> getBooksFavLd(){
 
-        Livro livro1 = new Livro(0, R.drawable.thetimeofcomtempt, "The Witcher: Blood of Elvens", "Aventura", "Muitas coisas", "5.00");
-        Livro livro2 = new Livro(1, R.drawable.thetimeofcomtempt, "The Witcher: The Time of Contempt", "Aventura", "Mais coisas", "5.00");
-        Livro livro3 = new Livro(2, R.drawable.thetimeofcomtempt, "The Witcher: Sword of Destiny", "Aventura", "More things", "5.00");
-
-        ListaLivros.add(livro1);
-        ListaLivros.add(livro2);
-        ListaLivros.add(livro3);
-
-        return ListaLivros;
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Livro> pager = new Pager(new PagingConfig(10), () -> new FavLivrosPagingSource(athenaRepository));
+        booksFavLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+        return booksFavLd;
     }
 
 }

@@ -18,28 +18,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnvInfoLivro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimaryVariant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bnvInfoLivro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbInfoLivro">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -53,24 +44,28 @@
                     android:layout_height="200dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
                     tools:srcCompat="@tools:sample/avatars" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tvAvaliacoesInfo"
+                android:id="@+id/tvTituloInfoLivro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/avaliacoes" />
+                android:text="TextView"
+                android:textSize="20sp" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="8dp" />
 
             <TextView
-                android:id="@+id/tvTituloSinopse"
+                android:id="@+id/tvFixSinopse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sinopse"
@@ -93,7 +88,7 @@
                 android:layout_height="8dp" />
 
             <TextView
-                android:id="@+id/tvTituloSobre"
+                android:id="@+id/tvFixSobre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sobre"
@@ -170,6 +165,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ISBN" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/tvAvaliacoesInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/avaliacoes" />
 
         </LinearLayout>
     </ScrollView>

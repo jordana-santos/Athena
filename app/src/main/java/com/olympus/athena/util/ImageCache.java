@@ -11,6 +11,8 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+import com.olympus.athena.R;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -84,7 +86,7 @@ public class ImageCache {
      * @param w largura que a imagem deve ter
      * @param h altura que a imagem deve ter
      */
-    public static void loadImageBase64ToImageView(Context context, String id, ImageView imageView, int w, int h) {
+    public static void loadImageBase64ToImageView(Context context, String serverAddress, String id, ImageView imageView, int w, int h) {
 
         String imageLocation = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES) + "/" + id;
         File f = new File(imageLocation);
@@ -96,7 +98,12 @@ public class ImageCache {
             imgLd.observe(getLifecycleOwner(context), new Observer<Bitmap>() {
                 @Override
                 public void onChanged(Bitmap bitmap) {
-                    imageView.setImageBitmap(bitmap);
+                    if(bitmap == null){
+                        imageView.setImageResource(R.drawable.no_image);
+                    }
+                    else {
+                        imageView.setImageBitmap(bitmap);
+                    }
                 }
             });
 
@@ -104,7 +111,7 @@ public class ImageCache {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
-                    HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "pegar_imagem_produto.php", "GET", "UTF-8");
+                    HttpRequest httpRequest = new HttpRequest(serverAddress, "GET", "UTF-8");
                     httpRequest.addParam("id", id);
 
                     try {
@@ -114,12 +121,19 @@ public class ImageCache {
 
                         String pureBase64Encoded = imgBase64.substring(imgBase64.indexOf(",") + 1);
                         Bitmap img = Util.base642Bitmap(pureBase64Encoded);
-                        Util.saveImage(img, imageLocation);
+                        if(img == null){
+                            imgLd.postValue(null);
+                        }
+                        else{
+                            Util.saveImage(img, imageLocation);
+                        }
+
 
                         Bitmap finalImg = Util.getBitmap(imageLocation, w, h);
                         imgLd.postValue(finalImg);
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
+                        imgLd.postValue(null);
                     }
                 }
             });

@@ -14,26 +14,26 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 
-    public class CategoriaPagingSource extends ListenableFuturePagingSource<Integer, Categoria> {
-    {
-    }
+public class LivrosPagingSource extends ListenableFuturePagingSource<Integer, Livro> {
+    String idCat;
     AthenaRepository athenaRepository;
 
     Integer initialLoadSize = 0;
 
-    public CategoriaPagingSource(AthenaRepository athenaRepository) {
+    public LivrosPagingSource(AthenaRepository athenaRepository, String idCat) {
         this.athenaRepository = athenaRepository;
+        this.idCat = idCat;
     }
 
     @Nullable
     @Override
-    public Integer getRefreshKey(@NonNull PagingState<Integer, Categoria> pagingState) {
+    public Integer getRefreshKey(@NonNull PagingState<Integer, Livro> pagingState) {
         return null;
     }
 
     @NonNull
     @Override
-    public ListenableFuture<LoadResult<Integer, Categoria>> loadFuture(@NonNull LoadParams<Integer> loadParams) {
+    public ListenableFuture<LoadResult<Integer, Livro>> loadFuture(@NonNull LoadParams<Integer> loadParams) {
         Integer nextPageNumber = loadParams.getKey();
         if (nextPageNumber == null) {
             nextPageNumber = 1;
@@ -51,16 +51,16 @@ import java.util.concurrent.Executors;
         ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newSingleThreadExecutor());
         Integer finalOffSet = offSet;
         Integer finalNextPageNumber = nextPageNumber;
-        ListenableFuture<LoadResult<Integer, Categoria>> lf = service.submit(new Callable<LoadResult<Integer, Categoria >>() {
+        ListenableFuture<LoadResult<Integer, Livro>> lf = service.submit(new Callable<LoadResult<Integer, Livro >>() {
             @Override
-            public LoadResult<Integer, Categoria> call() {
-                List<Categoria> categoriaList = null;
-                categoriaList = athenaRepository.loadCat(loadParams.getLoadSize(), finalOffSet);
+            public LoadResult<Integer, Livro> call() {
+                List<Livro> booksList = null;
+                booksList = athenaRepository.loadBooks(loadParams.getLoadSize(), finalOffSet, idCat);
                 Integer nextKey = null;
-                if(categoriaList.size() >= loadParams.getLoadSize()) {
+                if(booksList.size() >= loadParams.getLoadSize()) {
                     nextKey = finalNextPageNumber + 1;
                 }
-                return new LoadResult.Page<Integer, Categoria>(categoriaList,
+                return new LoadResult.Page<Integer, Livro>(booksList,
                         null,
                         nextKey);
 
