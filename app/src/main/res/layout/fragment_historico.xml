@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:ems="10"
-        android:hint="Procurar livro"
+        android:hint="@string/pesquisa"
         android:inputType="textPersonName"
         android:textColor="@color/off_white"
         android:textColorHint="@color/off_white"
