@@ -27,6 +27,7 @@ public class MainViewModel extends AndroidViewModel {
     LiveData<PagingData<Categoria>> catLd;
     LiveData<PagingData<Livro>> booksLd;
     LiveData<PagingData<Livro>> booksFavLd;
+    LiveData<PagingData<Livro>> booksHistLd;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -66,6 +67,14 @@ public class MainViewModel extends AndroidViewModel {
         Pager<Integer, Livro> pager = new Pager(new PagingConfig(10), () -> new FavLivrosPagingSource(athenaRepository));
         booksFavLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
         return booksFavLd;
+    }
+
+    public LiveData<PagingData<Livro>> getBooksHistLd(){
+
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Livro> pager = new Pager(new PagingConfig(10), () -> new HistLivroPagingSource(athenaRepository));
+        booksHistLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+        return booksHistLd;
     }
 
 }

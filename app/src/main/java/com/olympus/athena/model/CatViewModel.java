@@ -15,7 +15,6 @@ import kotlinx.coroutines.CoroutineScope;
 
 public class CatViewModel extends AndroidViewModel {
 
-    // TODO criei para teste mas não entendi como se integra a aplicação
     LiveData<PagingData<Categoria>> booksLd;
 
     public CatViewModel(@NonNull Application application) {

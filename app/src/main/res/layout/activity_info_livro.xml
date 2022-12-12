@@ -171,10 +171,9 @@
                 android:layout_height="8dp" />
 
             <TextView
-                android:id="@+id/tvAvaliacoesInfo"
+                android:id="@+id/tvAvaliacaoInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/avaliacoes" />
 
         </LinearLayout>

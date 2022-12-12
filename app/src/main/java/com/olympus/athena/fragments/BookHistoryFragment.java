@@ -5,7 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.paging.PagingData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +19,7 @@ import android.view.ViewGroup;
 import com.olympus.athena.R;
 import com.olympus.athena.activity.MainActivity;
 import com.olympus.athena.adapter.ListaLivroAdapter;
+import com.olympus.athena.adapter.LivroComparator;
 import com.olympus.athena.model.Livro;
 import com.olympus.athena.model.MainViewModel;
 
@@ -53,11 +57,26 @@ public class BookHistoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         MainViewModel mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
-       // List<Livro> livros = mainViewModel.pegarListaLivros();
-       // ListaLivroAdapter adapter = new ListaLivroAdapter((MainActivity) getActivity(),livros);
+        LiveData<PagingData<Livro>> livrosLd = mainViewModel.getBooksHistLd();
+        ListaLivroAdapter adapter = new ListaLivroAdapter((MainActivity) getActivity(), new LivroComparator());
 
         RecyclerView rv = view.findViewById(R.id.rvHist);
-       // rv.setAdapter(adapter);
+        rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        livrosLd.observe((MainActivity) getActivity(), new Observer<PagingData<Livro>>() {
+            /**
+             * Esse método é chamado sempre que uma nova página de livros é entregue à app pelo
+             * servidor web.
+             * @param livroPagingData contém uma página de livros
+             */
+            @Override
+            public void onChanged(PagingData<Livro> livroPagingData) {
+
+                // Adiciona a nova página de produtos ao Adapter do RecycleView. Isso faz com que
+                // novos produtos apareçam no RecycleView.
+                adapter.submitData(getLifecycle(), livroPagingData);
+            }
+        });
     }
 }
