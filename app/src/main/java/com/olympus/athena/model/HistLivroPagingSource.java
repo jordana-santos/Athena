@@ -53,7 +53,7 @@ public class HistLivroPagingSource extends ListenableFuturePagingSource<Integer,
             @Override
             public LoadResult<Integer, Livro> call() {
                 List<Livro> booksList = null;
-                booksList = athenaRepository.loadFavBooks(loadParams.getLoadSize(), finalOffSet);
+                booksList = athenaRepository.loadHistBooks(loadParams.getLoadSize(), finalOffSet);
                 Integer nextKey = null;
                 if(booksList.size() >= loadParams.getLoadSize()) {
                     nextKey = finalNextPageNumber + 1;

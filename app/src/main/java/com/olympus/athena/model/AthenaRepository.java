@@ -330,6 +330,90 @@ public class AthenaRepository {
         return livrosList;
     }
 
+    public List<Livro> loadHistBooks(Integer limit, Integer offSet) {
+
+        // cria a lista de produtos incicialmente vazia, que será retornada como resultado
+        List<Livro> livrosHistList = new ArrayList<>();
+
+        // Para obter a lista de produtos é preciso estar logado. Então primeiro otemos o login e senha
+        // salvos na app.
+        String email = Config.getLogin(context);
+        String password = Config.getPassword(context);
+
+        // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
+        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL +"pegar_historico.php", "GET", "UTF-8");
+        httpRequest.addParam("limit", limit.toString());
+        httpRequest.addParam("offset", offSet.toString());
+
+        // Para esta ação, é preciso estar logado. Então na requisição HTTP setamos o login e senha do
+        // usuário. Ao executar a requisição, o login e senha do usuário serão enviados ao servidor web,
+        // o qual verificará se o login e senha batem com aquilo que está no BD. Somente depois dessa
+        // verificação de autenticação é que o servidor web irá realizar esta ação.
+        httpRequest.setBasicAuth(email, password);
+
+        String result = "";
+        try {
+            // Executa a requisição HTTP. É neste momento que o servidor web é contactado. Ao executar
+            // a requisição é aberto um fluxo de dados entre o servidor e a app (InputStream is).
+            InputStream is = httpRequest.execute();
+
+            result = Util.inputStream2String(is, "UTF-8");
+
+            // Fecha a conexão com o servidor web.
+            httpRequest.finish();
+
+            Log.i("HTTP HISTORICO RESULT", result);
+
+            // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
+            // monta internamente uma estrutura de dados similar ao dicionário em python.
+            JSONObject jsonObject = new JSONObject(result);
+
+            // obtem o valor da chave sucesso para verificar se a ação ocorreu da forma esperada ou não.
+            int success = jsonObject.getInt("sucesso");
+
+            // Se sucesso igual a 1, os produtos são obtidos da String JSON e adicionados à lista de
+            // produtos a ser retornada como resultado.
+            if(success == 1) {
+
+                // A chave produtos é um array de objetos do tipo json (JSONArray), onde cada um desses representa
+                // um produto
+                JSONArray jsonArray = jsonObject.getJSONArray("livros");
+
+                // Cada elemento do JSONArray é um JSONObject que guarda os dados de um produto
+                for(int i = 0; i < jsonArray.length(); i++) {
+
+                    // Obtemos o JSONObject referente a um produto
+                    JSONObject jLivro = jsonArray.getJSONObject(i);
+
+                    // Obtemos os dados de um produtos via JSONObject
+                    String codigo_livro = jLivro.getString("codigo_livro");
+                    String titulo = jLivro.getString("titulo");
+                    String autor = jLivro.getString("autor");
+                    String sinopse = jLivro.getString("sinopse");
+                    String nota = jLivro.getString("nota");
+
+                    // Criamo um objeto do tipo Product para guardar esses dados
+                    Livro livro = new Livro();
+                    livro.codigoLivro = codigo_livro;
+                    livro.titulo = titulo;
+                    livro.autor = autor;
+                    livro.sinopse = sinopse;
+                    livro.nota = nota;
+
+                    // Adicionamos o objeto product na lista de produtos
+                    livrosHistList.add(livro);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("HTTP RESULT", result);
+        }
+
+        return livrosHistList;
+    }
+
 
     /**
      * Método que cria uma requisição HTTP para obter os detalhes de um produto junto ao servidor web.
