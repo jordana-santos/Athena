@@ -42,9 +42,6 @@
             android:name=".activity.InfoLivroActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AtualizarDadosActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity

@@ -47,7 +47,6 @@ public class CategoriaAdapter extends PagingDataAdapter<Categoria, MyViewHolder>
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO criar o código do onclick
                 mainActivity.setarFragmentoListaLivro(cat.codigoCategoria);
             }
         });

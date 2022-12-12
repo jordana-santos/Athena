@@ -57,7 +57,6 @@ public class BookCatFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         LiveData<PagingData<Categoria>> categoriasLd = mainViewModel.getCatLd();

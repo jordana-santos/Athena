@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(tbMain);
 
         final MainViewModel vm = new ViewModelProvider(this).get(MainViewModel.class);
+
 
         bottomNavigationView = findViewById(R.id.bnvMain);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

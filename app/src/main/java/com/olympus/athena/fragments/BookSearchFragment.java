@@ -28,16 +28,16 @@ import com.olympus.athena.activity.MainActivity;
  * Use the {@link BookListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BookListFragment extends Fragment {
+public class BookSearchFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_CODIGO_CATEGORIA = "idCategoria";
+    private static final String ARG_PESQUISA_USUARIO = "pesquisaUsuario";
 
     // TODO: Rename and change types of parameters
-    private String idCat;
+    private String pesquisaUsuario;
 
-    public BookListFragment() {
+    public BookSearchFragment() {
         // Required empty public constructor
     }
 
@@ -45,14 +45,14 @@ public class BookListFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param idCategoria Parameter 1.
+     * @param pesquisaUsuario Parameter 1.
      * @return A new instance of fragment BookListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BookListFragment newInstance(String idCategoria) {
-        BookListFragment fragment = new BookListFragment();
+    public static BookSearchFragment newInstance(String pesquisaUsuario) {
+        BookSearchFragment fragment = new BookSearchFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_CODIGO_CATEGORIA, idCategoria);
+        args.putString(ARG_PESQUISA_USUARIO, pesquisaUsuario);
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,7 +61,7 @@ public class BookListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            idCat = getArguments().getString(ARG_CODIGO_CATEGORIA);
+            pesquisaUsuario = getArguments().getString(ARG_PESQUISA_USUARIO);
         }
     }
 
@@ -76,7 +76,7 @@ public class BookListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         MainViewModel mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
-        LiveData<PagingData<Livro>> livrosLd = mainViewModel.getBooksLd(idCat);
+        LiveData<PagingData<Livro>> livrosLd = mainViewModel.getBooksLd(pesquisaUsuario);
         ListaLivroAdapter adapter = new ListaLivroAdapter((MainActivity) getActivity(), new LivroComparator());
 
         RecyclerView rv = view.findViewById(R.id.rvListFrag);
