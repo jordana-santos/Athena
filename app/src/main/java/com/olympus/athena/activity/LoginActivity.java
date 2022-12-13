@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         loginViewModel = new LoginViewModel(getApplication());
+
+        ImageView imgLogo = findViewById(R.id.imvLogoLogin);
+        imgLogo.setImageResource(R.drawable.athenas);
 
         Button button = findViewById(R.id.btnEntrar);
         button.setOnClickListener(new View.OnClickListener() {

@@ -7,13 +7,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.olympus.athena.R;
 import com.olympus.athena.adapter.InfoLivroAdapter;
 import com.olympus.athena.model.InfoViewModel;
 import com.olympus.athena.model.Livro;
+import com.olympus.athena.util.Config;
+import com.olympus.athena.util.ImageCache;
 
 public class InfoLivroActivity extends AppCompatActivity {
 
@@ -41,6 +45,7 @@ public class InfoLivroActivity extends AppCompatActivity {
                     TextView dataPublicacao = findViewById(R.id.tvDataPubliInfo);
                     TextView ISBN = findViewById(R.id.tvISBN);
                     TextView nota = findViewById(R.id.tvAvaliacaoInfo);
+                    ImageView capa = findViewById(R.id.imCapaLivro);
 
                     titulo.setText(livro.titulo);
                     sinopse.setText(livro.sinopse);
@@ -52,6 +57,10 @@ public class InfoLivroActivity extends AppCompatActivity {
                     dataPublicacao.setText("Data de publicação: " + livro.dataPublicacao);
                     ISBN.setText("ISBN:" + livro.ISBN);
                     nota.setText("Nota: " + livro.nota);
+                    ImageCache.loadImageBase64ToImageView(InfoLivroActivity.this, Config.PRODUCTS_APP_URL + "pegar_imagem_livro.php", livro.codigoLivro, capa, -1, 200);
+
+                    Toolbar toolbar = findViewById(R.id.tbInfoLivro);
+                    toolbar.setTitle(livro.titulo);
                 }
                 else {
                     Toast.makeText(InfoLivroActivity.this, "Não foi possível obter os detalhes deste item", Toast.LENGTH_LONG).show();
